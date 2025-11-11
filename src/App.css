@@ -1,46 +1,3 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
 .app {
   min-height: 100vh;
   width: 100%;
@@ -101,19 +58,6 @@
   transform: scale(1);
 }
 
-.main-heart {
-  font-size: 80px;
-  text-align: center;
-  animation: heartBeat 1.5s infinite;
-  margin-bottom: 20px;
-}
-
-@keyframes heartBeat {
-  0%, 100% { transform: scale(1); }
-  10%, 30% { transform: scale(1.1); }
-  20%, 40% { transform: scale(1.05); }
-}
-
 .header-emoji {
   font-size: 60px;
   text-align: center;
@@ -165,30 +109,6 @@
   }
 }
 
-.hearts-container {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin: 30px 0;
-  font-size: 2em;
-}
-
-.heart {
-  display: inline-block;
-  animation: bounce 2s infinite;
-}
-
-.heart:nth-child(1) { animation-delay: 0s; }
-.heart:nth-child(2) { animation-delay: 0.2s; }
-.heart:nth-child(3) { animation-delay: 0.4s; }
-.heart:nth-child(4) { animation-delay: 0.6s; }
-.heart:nth-child(5) { animation-delay: 0.8s; }
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
-}
-
 .compliments {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -220,37 +140,6 @@
   color: #6b7280;
   font-size: 1em;
   margin: 10px 0;
-}
-
-.hint {
-  font-size: 0.85em !important;
-  color: #8b5cf6 !important;
-  font-style: italic;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
-}
-
-.floating-heart {
-  position: fixed;
-  font-size: 30px;
-  pointer-events: none;
-  animation: floatUp 2s ease-out forwards;
-  z-index: 1000;
-}
-
-@keyframes floatUp {
-  0% {
-    transform: translateY(0) rotate(0deg);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-200px) rotate(360deg);
-    opacity: 0;
-  }
 }
 
 .click-heart {
@@ -351,18 +240,6 @@
   }
 }
 
-.big-heart {
-  font-size: 120px;
-  animation: heartBeatBig 1s infinite;
-  margin-bottom: 20px;
-}
-
-@keyframes heartBeatBig {
-  0%, 100% { transform: scale(1); }
-  10%, 30% { transform: scale(1.2); }
-  20%, 40% { transform: scale(1.1); }
-}
-
 .success-emoji {
   font-size: 100px;
   margin-bottom: 20px;
@@ -394,27 +271,6 @@
 .success-text:nth-child(4) { animation-delay: 0.4s; }
 .success-text:nth-child(5) { animation-delay: 0.6s; }
 
-.emoji-rain {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 30px;
-  font-size: 2.5em;
-}
-
-.emoji-rain span {
-  display: inline-block;
-  animation: bounce 2s infinite;
-}
-
-.emoji-rain span:nth-child(1) { animation-delay: 0s; }
-.emoji-rain span:nth-child(2) { animation-delay: 0.1s; }
-.emoji-rain span:nth-child(3) { animation-delay: 0.2s; }
-.emoji-rain span:nth-child(4) { animation-delay: 0.3s; }
-.emoji-rain span:nth-child(5) { animation-delay: 0.4s; }
-.emoji-rain span:nth-child(6) { animation-delay: 0.5s; }
-.emoji-rain span:nth-child(7) { animation-delay: 0.6s; }
-
 .emoji-line {
   display: flex;
   justify-content: center;
@@ -439,28 +295,6 @@
   50% { transform: translateY(-10px); }
 }
 
-.falling-heart {
-  position: fixed;
-  top: -50px;
-  font-size: 40px;
-  pointer-events: none;
-  animation: fall linear infinite;
-  z-index: 1000;
-}
-
-@keyframes fall {
-  0% {
-    top: -50px;
-    transform: rotate(0deg);
-    opacity: 1;
-  }
-  100% {
-    top: 100vh;
-    transform: rotate(360deg);
-    opacity: 0.5;
-  }
-}
-
 /* Адаптив для мобильных */
 @media (max-width: 768px) {
   .app {
@@ -470,10 +304,6 @@
   .container {
     padding: 30px 20px;
     border-radius: 20px;
-  }
-
-  .main-heart {
-    font-size: 60px;
   }
 
   .header-emoji {
@@ -488,11 +318,6 @@
     font-size: 1.05em;
   }
 
-  .hearts-container {
-    font-size: 1.5em;
-    gap: 10px;
-  }
-
   .compliments {
     grid-template-columns: 1fr;
     gap: 10px;
@@ -500,10 +325,6 @@
 
   .compliment {
     padding: 12px;
-  }
-
-  .footer-text p {
-    font-size: 1em;
   }
 
   .question {
@@ -526,17 +347,8 @@
     font-size: 2.2em;
   }
 
-  .big-heart {
-    font-size: 90px;
-  }
-
   .success-emoji {
     font-size: 80px;
-  }
-
-  .emoji-rain {
-    font-size: 2em;
-    gap: 15px;
   }
 
   .emoji-line {
@@ -557,10 +369,6 @@
   .message {
     font-size: 1em;
     margin: 15px 0;
-  }
-
-  .main-heart {
-    font-size: 50px;
   }
 
   .header-emoji {
@@ -588,17 +396,8 @@
     font-size: 1.1em;
   }
 
-  .big-heart {
-    font-size: 70px;
-  }
-
   .success-emoji {
     font-size: 70px;
-  }
-
-  .emoji-rain {
-    font-size: 1.5em;
-    gap: 10px;
   }
 
   .emoji-line {
