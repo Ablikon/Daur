@@ -7,6 +7,7 @@ function App() {
   const [yesClicked, setYesClicked] = useState(false)
   const [noClickCount, setNoClickCount] = useState(0)
   const [clickHearts, setClickHearts] = useState([])
+  const [activeCompliment, setActiveCompliment] = useState(null)
 
   useEffect(() => {
     const timer = setTimeout(() => setShowMessage(true), 500)
@@ -37,11 +38,39 @@ function App() {
   }
 
   const getNoButtonText = () => {
-    if (noClickCount === 0) return "Нет"
-    if (noClickCount === 1) return "Точно нет?"
-    if (noClickCount === 2) return "Подумай ещё"
-    if (noClickCount >= 3) return "Попробуй еще раз"
-    return "Нет"
+    const texts = ["Нет", "Точно нет?", "Подумай ещё", "Попробуй еще раз"]
+    return texts[noClickCount % texts.length]
+  }
+
+  const complimentsData = [
+    { 
+      emoji: "✨", 
+      text: "Ты особенная",
+      detail: "В твоей улыбке, взгляде и даже смехе есть что-то притягательно необычайное. Просто хочется видеть, как ты улыбаешься."
+    },
+    { 
+      emoji: "🌟", 
+      text: "Ты яркая",
+      detail: "Твоя энергия и голос создают уют и интерес, хочется слушать тебя и находиться рядом."
+    },
+    { 
+      emoji: "🌸", 
+      text: "Ты классная",
+      detail: "Твоя лёгкость, уверенность и женственность делают тебя по-настоящему привлекательной и особенной для меня."
+    },
+    { 
+      emoji: "💫", 
+      text: "Ты уникальная",
+      detail: "Когда ты сказала, что у тебя всё будет хорошо, я поверил тебе сразу. В тебе есть это внутреннее сияние - спокойная уверенность, что всё получится. Мне бы хотелось быть частью этого света."
+    }
+  ]
+
+  const handleComplimentClick = (index) => {
+    setActiveCompliment(index)
+  }
+
+  const closeCompliment = () => {
+    setActiveCompliment(null)
   }
 
   return (
@@ -69,19 +98,20 @@ function App() {
             
             <div className="message-box">
               <p className="message">
-                Знаю, что расстроил тебя, и мне правда неприятно 
+                Может тебе все еще неприятно, надеюсь этот небольшой жест
+                сможет немного поднять тебе настроение
               </p>
               <p className="message delay-1">
-                Мне очень важно наше общение
+                Я очень ценю наше общение, ты это часто слышишь 😅
               </p>
               <p className="message delay-2">
                 Ценю каждое наше общение и каждую улыбку 
               </p>
               <p className="message delay-3">
-                Прости за недопонимание
+                Хотел бы забыть эту ситуацию и двигаться дальше
               </p>
               <p className="message delay-4">
-                Давай попробуем еще раз?
+                Прощаешь?
               </p>
             </div>
 
@@ -106,24 +136,46 @@ function App() {
             </div>
 
             <div className="compliments">
-              <div className="compliment">✨ Ты особенная</div>
-              <div className="compliment">🌟 Ты яркая</div>
-              <div className="compliment">🌸 Ты классная</div>
-              <div className="compliment">💫 Ты уникальная</div>
+              {complimentsData.map((comp, index) => (
+                <div 
+                  key={index}
+                  className="compliment" 
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    handleComplimentClick(index)
+                  }}
+                >
+                  {comp.emoji} {comp.text}
+                </div>
+              ))}
             </div>
+
+            {activeCompliment !== null && (
+              <div className="compliment-modal" onClick={closeCompliment}>
+                <div className="compliment-modal-content" onClick={(e) => e.stopPropagation()}>
+                  <button className="close-button" onClick={closeCompliment}>×</button>
+                  <div className="modal-emoji">{complimentsData[activeCompliment].emoji}</div>
+                  <h3>{complimentsData[activeCompliment].text}</h3>
+                  <p>{complimentsData[activeCompliment].detail}</p>
+                </div>
+              </div>
+            )}
           </>
         ) : (
           <div className="success-message">
             <div className="success-emoji">🎉</div>
             <h2 className="success-title">Здорово!</h2>
-            <p className="success-text">
+            {/* <p className="success-text">
               Спасибо, что даешь мне еще один шанс 😊
-            </p>
+            </p> */}
             <p className="success-text">
               Ты действительно классная, Аида! ✨
             </p>
             <p className="success-text">
-              Надеюсь, смог поднять тебе настроение 🌟
+              Надеюсь, смог поднять тебе настроение 💖
+            </p>
+            <p className="success-text">
+              Хочу и дальше делить с тобой приятные дни/вечера и радовать тебя! 
             </p>
             <div className="emoji-line">
               <span>😊</span>
@@ -136,7 +188,7 @@ function App() {
         )}
 
         <div className="footer-text">
-          <p>С теплом и надеждой на понимание 🌟</p>
+          <p>С заботой от Даурена! 💟</p>
         </div>
       </div>
     </div>
